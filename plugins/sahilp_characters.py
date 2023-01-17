@@ -4,9 +4,13 @@
 # servers under the SahilP family.
 
 # Originally created by Stigma and Mr.Smoothy
-# Extended by SahilP Teams community
+# Extended by fans
 
 # ba_meta require api 7
+
+import ba
+from bastd.actor.spazappearance import Appearance
+
 
 CHARACTERS = {
     "SahilP > Shraddha": {
@@ -445,50 +449,79 @@ CHARACTERS = {
         "icon_mask_texture": "bearIconColorMask",
         "style": "kronk",
     },
+
+    "Sahilp > BandedPixie2": {
+        "color_texture": "pixieColor",
+        "color_mask_texture": "pixieColorMask",
+        "head_model": "pixieHead",
+        "hand_model": "frostyHand",
+        "torso_model": "zoeTorso",
+        "pelvis_model": "pixiePelvis",
+        "upper_arm_model": "pixieUpperArm",
+        "forearm_model": "ninjaForeArm",
+        "upper_leg_model": "pixieUpperLeg",
+        "lower_leg_model": "frostyLowerLeg",
+        "toes_model": "pixieToes",
+        "jump_sounds": ["pixie1", "pixie2", "pixie3", "pixie4"],
+        "attack_sounds": ["pixie1", "pixie2", "pixie3", "pixie4"],
+        "impact_sounds": ["pixieHit1", "pixieHit2"],
+        "death_sounds": ["pixieDeath"],
+        "pickup_sounds": ["pixie1", "pixie2", "pixie3", "pixie4"],
+        "fall_sounds": ["pixieFall"],
+        "icon_texture": "pixieIcon",
+        "icon_mask_texture": "pixieIconColorMask",
+        "style": "pixie",
+    },
+
+    "SahilP > YukataZoe": {
+        "color_texture": "zoeColor",
+        "color_mask_texture": "zoeColorMask",
+        "head_model": "zoeHead",
+        "hand_model": "kronkHand",
+        "torso_model": "kronkTorso",
+        "pelvis_model": "bearPelvis",
+        "upper_arm_model": "cyborgUpperArm",
+        "forearm_model": "wizardForeArm",
+        "upper_leg_model": "agentUpperLeg",
+        "lower_leg_model": "wizardLowerLeg",
+        "toes_model": "zoeToes",
+        "jump_sounds": ["zoeJump01", "zoeJump02", "zoeJump03"],
+        "attack_sounds": ["zoeAttack01", "zoeAttack02", "zoeAttack03"],
+        "impact_sounds": ["zoeImpact01", "zoeImpact02", "zoeImpact03", "zoeImpact04"],
+        "death_sounds": ["zoeDeath01"],
+        "pickup_sounds": ["zoePickup01"],
+        "fall_sounds": ["zoeFall01"],
+        "icon_texture": "zoeIcon",
+        "icon_mask_texture": "zoeIconColorMask",
+        "style": "female",
+    },
+
+    "SahilP > WeddingPixie": {
+        "color_texture": "pixieColor",
+        "color_mask_texture": "pixieColorMask",
+        "head_model": "pixieHead",
+        "hand_model": "pixieHand",
+        "torso_model": "pixieTorso",
+        "pelvis_model": "pixiePelvis",
+        "upper_arm_model": "wizardUpperArm",
+        "forearm_model": "wizardForeArm",
+        "upper_leg_model": "bunnyUpperLeg",
+        "lower_leg_model": "pixieLowerLeg",
+        "toes_model": "pixieToes",
+        "jump_sounds": ["pixie1", "pixie2", "pixie3", "pixie4"],
+        "attack_sounds": ["pixie1", "pixie2", "pixie3", "pixie4"],
+        "impact_sounds": ["pixieHit1", "pixieHit2"],
+        "death_sounds": ["pixieDeath"],
+        "pickup_sounds": ["pixie1", "pixie2", "pixie3", "pixie4"],
+        "fall_sounds": ["pixieFall"],
+        "icon_texture": "pixieIcon",
+        "icon_mask_texture": "pixieIconColorMask",
+        "style": "pixie",
+    },
 }
 
 
-try:
-    # Versions > v1.6
-    from bastd.actor.spazappearance import *
-    USING_NEW_API = True
-    from ba import Plugin
-except ImportError:
-    # Versions < v1.6
-    from bsSpaz import *
-    USING_NEW_API = False
-    # Fool versions < v1.6 into thinking we"re > v1.6
-    class Plugin:
-        pass
-
-
-def register_character_using_old_1_4_api(name, body):
-    t = Appearance(name)
-    t.colorTexture = body["color_texture"]
-    t.colorMaskTexture = body["color_mask_texture"]
-    t.defaultColor = (0, 1, 0.7)
-    t.defaultHighlight = (0.65, 0.35, 0.75)
-    t.iconTexture = body["icon_texture"]
-    t.iconMaskTexture = body["icon_mask_texture"]
-    t.headModel = body["head_model"]
-    t.torsoModel = body["torso_model"]
-    t.pelvisModel = body["pelvis_model"]
-    t.upperArmModel = body["upper_arm_model"]
-    t.foreArmModel = body["forearm_model"]
-    t.handModel = body["hand_model"]
-    t.upperLegModel = body["upper_leg_model"]
-    t.lowerLegModel = body["lower_leg_model"]
-    t.toesModel = body["toes_model"]
-    t.attackSounds = body["attack_sounds"]
-    t.jumpSounds = body["jump_sounds"]
-    t.impactSounds = body["impact_sounds"]
-    t.deathSounds = body["death_sounds"]
-    t.pickupSounds = body["pickup_sounds"]
-    t.fallSounds = body["fall_sounds"]
-    t.style = body["style"]
-
-
-def register_character_using_new_api(name, body):
+def register_characters(name, body):
     t = Appearance(name)
     t.color_texture = body["color_texture"]
     t.color_mask_texture = body["color_mask_texture"]
@@ -514,19 +547,7 @@ def register_character_using_new_api(name, body):
     t.style = body["style"]
 
 
-def register_character(name, body):
-    if USING_NEW_API:
-        register_character_using_new_api(name, body)
-    else:
-        register_character_using_old_1_4_api(name, body)
-
-
-def register_characters():
-    for name, body in CHARACTERS.items():
-        register_character(name, body)
-
-
 # ba_meta export plugin
-class Main(Plugin):
+class Main(ba.Plugin):
     def on_app_running(self):
         register_characters()
