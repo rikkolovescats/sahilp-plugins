@@ -450,7 +450,7 @@ CHARACTERS = {
         "style": "kronk",
     },
 
-    "Sahilp > BandedPixie2": {
+    "SahilP > BandedPixie2": {
         "color_texture": "pixieColor",
         "color_mask_texture": "pixieColorMask",
         "head_model": "pixieHead",
@@ -521,7 +521,7 @@ CHARACTERS = {
 }
 
 
-def register_characters(name, body):
+def register_character(name, body):
     t = Appearance(name)
     t.color_texture = body["color_texture"]
     t.color_mask_texture = body["color_mask_texture"]
@@ -545,6 +545,11 @@ def register_characters(name, body):
     t.pickup_sounds = body["pickup_sounds"]
     t.fall_sounds = body["fall_sounds"]
     t.style = body["style"]
+
+
+def register_characters():
+    for name, body in CHARACTERS.items():
+        register_character(name, body)
 
 
 # ba_meta export plugin
