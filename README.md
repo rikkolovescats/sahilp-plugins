@@ -11,3 +11,7 @@ All Bombsquad plugins specific to the SahilP TeaMs in-game server, usable throug
   file for all 3rd party plugin sources. This file acts as a metadata source for all the plugins present in the repository.
   Please refer to it if you're interested in creating your own 3rd party plugin source.
 - This README file is a reference for modders wanting to setup their own 3rd plugin source and is not mandatory.
+
+## License
+
+All code in this repository is unlicensed.
