@@ -4,7 +4,7 @@
   "plugins_base_url": "https://github.com/rikkolovescats/sahilp-plugins/{content_type}/main/plugins",
   "plugins": {
     "sahilp_characters": {
-      "description": "Characters exclusive to servers under the SahilP TeaMs family.",
+      "description": "Characters exclusive to servers under the SahilP TeaMs family. Use them when creating a new player profile!",
       "external_url": "",
       "authors": [
         {
