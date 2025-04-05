@@ -1,10 +1,11 @@
+# Porting made easier by baport.(https://github.com/bombsquad-community/baport)
 # These characters will only work in single player and
 # servers under the SahilP family.
 
 # Originally created by Stigma and Mr.Smoothy
 # Extended by fans
 
-# ba_meta require api 8
+# ba_meta require api 9
 
 import babase
 import bauiv1 as bui
